@@ -4,12 +4,11 @@ export async function POST(req: Request) {
   try {
     const { email } = await req.json();
 
-    // 1. Диплом дээр үзүүлэхэд зориулсан "Simulation" логик
-    // Хэрэв и-мэйл хаягт 'test', 'hack', 'admin' орсон бол алдагдсан гэж харуулна
-    const compromisedKeywords = ['test', 'hack', 'admin', 'pwned'];
+    //  Simulation  
+    const compromisedKeywords = ['test', 'hack', 'admin', 'pwned', 'monkhtor'];
     const isCompromised = compromisedKeywords.some(keyword => email.toLowerCase().includes(keyword));
 
-    // 2. Сүлжээгээр дата хайж байгаа мэт харагдуулахын тулд 2 секунд хүлээлгэнэ
+    //  hud delay effect
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     if (isCompromised) {
@@ -18,7 +17,8 @@ export async function POST(req: Request) {
         breaches: [
           'Facebook (533M Users) Data Leak', 
           'Adobe Creative Cloud Database Breach', 
-          'LinkedIn Marketing Professional Dump'
+          'LinkedIn Marketing Professional Dump',
+          'Kage System Intrusion Trace'
         ],
         message: "SECURITY ALERT: Multiple data leaks detected."
       });

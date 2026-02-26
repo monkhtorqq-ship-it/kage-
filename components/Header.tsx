@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
-import Link from 'next/link'; // Next-ийн Link
+import Link from 'next/link'; 
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +16,6 @@ const Header = () => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/90 backdrop-blur-md py-4 border-b border-white/5' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO ХЭСЭГ: text-white нэмж өгсөн */}
         <Link href="/" className="text-2xl font-black text-white no-underline cursor-pointer tracking-tighter">
           KAGE<span className="text-red-500">.SITE</span>
         </Link>

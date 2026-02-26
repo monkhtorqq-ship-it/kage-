@@ -1,9 +1,8 @@
-// components/Footer.tsx
 const Footer = () => { 
     return (
         <footer className="w-full py-6 bg-gray-900/50 backdrop-blur-sm text-gray-400 mt-auto border-t border-gray-800/50">
             <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8"> {/* gap-12 байсныг 8 болгов */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8"> 
                     <div>
                         <h3 className="text-lg font-bold text-white mb-2">About KAGE</h3>
                         <p className="text-xs leading-relaxed opacity-70">
@@ -17,7 +16,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <hr className="my-4 border-gray-800" /> {/* my-8 байсныг 4 болгов */}
+                <hr className="my-4 border-gray-800" /> 
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-2">
                     <p className="text-[10px] tracking-tight">

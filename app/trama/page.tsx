@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import AttackDemo from './AttackDemo';
+import DefenseTools from './DefenseTools';
 
 const TramaPage = () => {
   const [text, setText] = useState('');
@@ -11,7 +13,6 @@ const TramaPage = () => {
   const [breaches, setBreaches] = useState<string[]>([]);
 
   const fullText = "INITIALIZING KAGE_BREACH_MONITOR... ACCESSING SECURE_DATABASE... READY.";
-
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -22,7 +23,7 @@ const TramaPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Backend-тэй холбогдох функц
+  // hurgan backend
   const handleScan = async () => {
     if (!email.includes('@')) return alert("И-мэйл буруу байна!");
     setStatus('scanning');
@@ -34,8 +35,8 @@ const TramaPage = () => {
         headers: { 'Content-Type': 'application/json' }
       });
       const data = await res.json();
-      
-      // Эффект харуулахын тулд 2 секунд хүлээлгэнэ
+
+      // 2 sec delay effect
       setTimeout(() => {
         setIsPwned(data.isPwned);
         setBreaches(data.breaches || []);
@@ -50,12 +51,17 @@ const TramaPage = () => {
   return (
     <div className="min-h-screen bg-black text-red-500 font-mono p-10 flex flex-col items-center justify-center">
       <div className={`w-full max-w-3xl border ${isPwned && status === 'result' ? 'border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.3)]' : 'border-cyan-900 shadow-[0_0_30px_rgba(6,182,212,0.1)]'} bg-gray-900/20 p-6 rounded-lg transition-all duration-500`}>
-          
+
         <div className="flex gap-2 mb-4 border-b border-gray-800 pb-2">
           <div className="w-3 h-3 rounded-full bg-red-500"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
-          <span className="text-[10px] ml-2 text-gray-600 uppercase tracking-widest italic">Kage-OS v1.0.2 - Security Module</span>
+          <span className="text-[10px] ml-2 text-gray-600 uppercase tracking-widest italic">Kage-OS - Security ☂︎</span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-20">
+          <AttackDemo />
+          <DefenseTools />
         </div>
 
         <div className="space-y-6">
@@ -65,7 +71,7 @@ const TramaPage = () => {
               <p className="text-sm leading-relaxed text-cyan-400">{text}<span className="animate-pulse">_</span></p>
               {text.length >= fullText.length && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center gap-4">
-                  <button 
+                  <button
                     onClick={() => setAccess(true)}
                     className="px-8 py-2 border border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-black transition-all font-bold uppercase text-xs"
                   >
@@ -80,14 +86,14 @@ const TramaPage = () => {
               {status === 'idle' && (
                 <div className="flex flex-col gap-4">
                   <p className="text-xs text-gray-400 uppercase tracking-tighter">Enter target email to check for data breaches:</p>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     placeholder="USER@INTERNAL_MAIL.COM"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="bg-transparent border-b border-cyan-500 outline-none text-cyan-300 text-xl py-2"
                   />
-                  <button 
+                  <button
                     onClick={handleScan}
                     className="py-3 bg-cyan-900/30 border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black font-black transition-all"
                   >
