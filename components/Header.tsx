@@ -1,0 +1,40 @@
+"use client";
+import React, { useState, useEffect } from 'react';
+import { Link as ScrollLink } from 'react-scroll';
+import Link from 'next/link'; // Next-ийн Link
+
+const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/90 backdrop-blur-md py-4 border-b border-white/5' : 'bg-transparent py-6'}`}>
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        
+        {/* LOGO ХЭСЭГ: text-white нэмж өгсөн */}
+        <Link href="/" className="text-2xl font-black text-white no-underline cursor-pointer tracking-tighter">
+          KAGE<span className="text-red-500">.SITE</span>
+        </Link>
+        
+        <nav className="hidden md:flex gap-8 items-center text-xs font-medium uppercase tracking-widest">
+          <ScrollLink to="home" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">Home</ScrollLink>
+          <ScrollLink to="features" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">About</ScrollLink>
+          
+          {/* ТОГТЛОО: Link доторх button-д өнгийг нь тодорхой зааж өгсөн */}
+          <Link href="/trama" className="no-underline">
+            <button className="border border-red-500/50 text-red-400 px-5 py-2 rounded-md hover:bg-red-500 hover:text-black transition-all duration-300 font-bold bg-transparent">
+              ENTER SYSTEM
+            </button>
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
