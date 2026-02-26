@@ -1,39 +1,68 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const NetworkMonitor = () => {
-  const [status, setStatus] = useState("IDLE");
-  
-  const runDiagnostic = () => {
-    setStatus("SCANNING");
-    setTimeout(() => setStatus("SECURE"), 2000);
+  const [isScanning, setIsScanning] = useState(false);
+  const [logs, setLogs] = useState<string[]>([]);
+
+  const startSniffing = () => {
+    setIsScanning(true);
+    setLogs([]);
+    const messages = [
+      "[!] Шинэ төхөөрөмж илэрлээ: iPhone 15 Pro",
+      "[?] Нээлттэй порт олдлоо: Port 80 (HTTP)",
+      "[*] Хэрэглэгчийн IP: 192.168.1.45",
+      "[!] СЭРЭМЖЛҮҮЛЭГ: Нууцлалгүй WiFi ашиглаж байна",
+      "[!] Юүлэгдэж буй дата: Facebook Login Packet...",
+      "[*] Байршил илэрлээ: Ulaanbaatar, Mongolia",
+      "[DONE] Халдлага хийх 3 боломжит цэг олдлоо."
+    ];
+
+    messages.forEach((msg, i) => {
+      setTimeout(() => {
+        setLogs(prev => [...prev, msg]);
+        if (i === messages.length - 1) setIsScanning(false);
+      }, i * 800);
+    });
   };
 
   return (
-    <div className="w-full max-w-sm p-6 border border-cyan-500/30 bg-black rounded-xl font-mono text-xs">
-      <h3 className="text-cyan-500 mb-4 font-black uppercase">Network Security Scan</h3>
-      <div className="space-y-3 mb-6">
-        <div className="flex justify-between border-b border-gray-800 pb-1">
-          <span className="text-gray-500">Firewall Status:</span>
-          <span className="text-green-500">ACTIVE</span>
-        </div>
-        <div className="flex justify-between border-b border-gray-800 pb-1">
-          <span className="text-gray-500">DDoS Protection:</span>
-          <span className="text-green-500">ENABLED</span>
-        </div>
-        <div className="flex justify-between border-b border-gray-800 pb-1">
-          <span className="text-gray-500">Current Load:</span>
-          <span className="text-white">0.02ms</span>
-        </div>
+    <div className="w-full max-w-sm p-6 border border-yellow-500/30 bg-black rounded-xl font-mono text-[10px] shadow-[0_0_20px_rgba(234,179,8,0.05)]">
+      <h3 className="text-yellow-500 mb-4 font-black uppercase tracking-widest flex items-center gap-2">
+        <span className="animate-pulse">●</span> Public WiFi Sniffer
+      </h3>
+      
+      <div className="bg-gray-950 border border-gray-900 p-4 rounded-lg mb-4 h-40 overflow-y-auto space-y-2 scrollbar-hide">
+        {logs.length === 0 && !isScanning && (
+          <p className="text-gray-600 italic text-center mt-10">
+            Нийтийн WiFi-д холбогдсон үед таны мэдээлэл яаж харагддагийг үзэх үү?
+          </p>
+        )}
+        {logs.map((log, i) => (
+          <p key={i} className={`${log.includes('[!]') ? 'text-red-500' : 'text-yellow-500/80'} leading-tight`}>
+            {log}
+          </p>
+        ))}
+        {isScanning && <span className="inline-block w-2 h-4 bg-yellow-500 animate-bounce ml-1" />}
       </div>
+
       <button 
-        onClick={runDiagnostic}
-        className="w-full py-2 bg-cyan-900/20 border border-cyan-500 text-cyan-400 font-bold hover:bg-cyan-500 hover:text-black transition-all"
+        onClick={startSniffing}
+        disabled={isScanning}
+        className={`w-full py-3 border transition-all font-bold uppercase tracking-tighter ${
+          isScanning 
+          ? "border-gray-700 text-gray-700 cursor-not-allowed" 
+          : "border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black shadow-[0_0_15px_rgba(234,179,8,0.2)]"
+        }`}
       >
-        {status === "SCANNING" ? "DIAGNOSING..." : "RUN SECURITY CHECK"}
+        {isScanning ? "SNIFFING PACKETS..." : "SCAN PUBLIC NETWORK"}
       </button>
-      {status === "SECURE" && <p className="mt-3 text-center text-[10px] text-green-500 uppercase">✓ System is optimized & protected</p>}
+
+      <p className="mt-4 text-gray-500 text-center leading-tight">
+        <span className="text-red-500 font-bold">СЭРЭМЖЛҮҮЛЭГ:</span> VPN-гүйгээр нийтийн WiFi ашиглах нь таны нууц үг, байршлыг хакеруудад шууд бэлэглэж буй хэрэг юм.
+      </p>
     </div>
   );
 };
+
 export default NetworkMonitor;

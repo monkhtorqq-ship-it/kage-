@@ -82,7 +82,7 @@ const Features = () => {
                   onClick={() => setActiveTab(null)}
                   className="absolute top-4 right-6 text-gray-500 hover:text-white font-mono text-[10px] border border-gray-800 px-2 py-1 rounded hover:border-red-500 transition-colors"
                 >
-                  [ TERMINATE_PROCESS X ]
+                  [ CLEAR ]
                 </button>
                 <div className="mt-4">
                   {featureData[activeTab].component}
