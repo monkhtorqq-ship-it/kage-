@@ -22,13 +22,10 @@ const Header = () => {
         
         <nav className="hidden md:flex gap-8 items-center text-xs font-medium uppercase tracking-widest">
           <ScrollLink to="home" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">Home</ScrollLink>
+          <ScrollLink to="threats" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">Threats</ScrollLink>
           <ScrollLink to="about" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">About</ScrollLink>
-          
-          <Link href="/trama" className="no-underline">
-            <button className="border border-red-500/50 text-red-400 px-5 py-2 rounded-md hover:bg-red-500 hover:text-black transition-all duration-300 font-bold bg-transparent">
-              ENTER SYSTEM
-            </button>
-          </Link>
+          <ScrollLink to="features" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">Features</ScrollLink> 
+          <ScrollLink to="manual" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">Manual</ScrollLink>
         </nav>
       </div>
     </header>

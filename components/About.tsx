@@ -5,13 +5,11 @@ import { motion } from "framer-motion";
 const About = () => {
   return (
     <section className="py-40  relative overflow-hidden" id="about">
-      {/* Background-д нь жаахан өнгө өгье, хоосон харагдуулахгүйн тулд */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
       
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          
-          {/* Зүүн тал: Текст хэсэг (Ойлгомжтой, том) */}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +33,6 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Баруун тал: 3 блок (Жаахан томорсөн, гоё хүрээтэй) */}
           <div className="grid grid-cols-1 gap-6">
             {[
               { 

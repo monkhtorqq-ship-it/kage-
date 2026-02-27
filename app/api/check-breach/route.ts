@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(req: Request) {
   try {
     const { email } = await req.json();
-
+    
     //  Simulation  
     const compromisedKeywords = ['test', 'hack', 'admin', 'pwned', 'monkhtor'];
     const isCompromised = compromisedKeywords.some(keyword => email.toLowerCase().includes(keyword));
