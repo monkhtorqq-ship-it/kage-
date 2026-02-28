@@ -2,16 +2,12 @@
 import React, { useState } from "react";
 import { IconFlame, IconBolt, IconShield } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-// Эдгээр 3 файлыг components хавтас дотор өмнө нь зааж өгснөөр үүсгэсэн байх ёстой шүү:
 import DarkWebFeed from "./DarkWebFeed";
-import DdosDemo from "./DdosDemo";
-import EncryptionTool from "./EncryptionTool";
+import DdosDemo from "./WIfi";
+import EncryptionTool from "./Morz";
 
 const Features = () => {
-  // Энэ хэсэг заавал байх ёстой, аль блок дээр дарсныг хадгална
   const [activeTab, setActiveTab] = useState<number | null>(null);
-
   const featureData = [
     {
       title: "Dark Web Access",

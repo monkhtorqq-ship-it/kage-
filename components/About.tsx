@@ -60,7 +60,7 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.15 }}
                 viewport={{ once: true }}
-                className={`p-7 border ${item.color} bg-gray-900/10 rounded-2xl backdrop-blur-sm group hover:bg-gray-900/30 transition-all duration-500`}
+                className={`p-7 border ${item.color} bg-gray-900/10 rounded-2xl backdrop-blur-sm group hover:bg-gray-900/30 hover:-translate-y-2 transition-all duration-500`}
               >
                 <div className="flex items-start gap-4">
                   <span className="text-2xl">{item.icon}</span>

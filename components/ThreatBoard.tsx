@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 const ThreatBoard = () => {
   const [attacks, setAttacks] = useState<any[]>([]);
 
-  // Халдлагын төрлүүд болон хотууд (Simulation)
   const attackTypes = ["DDoS Attack", "SQL Injection", "Brute Force", "Malware Spread", "Phishing"];
   const locations = ["New York, US", "Beijing, CN", "Moscow, RU", "London, UK", "Ulaanbaatar, MN", "Tokyo, JP", "Berlin, DE"];
 
@@ -47,7 +46,6 @@ const ThreatBoard = () => {
             </div>
           </div>
 
-          {/* Баруун тал: Урсаж буй халдлагын мэдээлэл */}
           <div className="w-full md:w-2/3 bg-gray-900/10 border border-white/5 rounded-2xl p-6 font-mono overflow-hidden">
             <div className="flex justify-between text-[10px] text-gray-600 border-b border-gray-800 pb-2 mb-4 uppercase font-bold">
               <span>Source</span>

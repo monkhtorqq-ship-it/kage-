@@ -40,7 +40,7 @@ const MatrixRain = () => {
     };
 
     const interval = setInterval(draw, 33);
-    const handleResize = () => {
+    const handleResize = () => {          
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
