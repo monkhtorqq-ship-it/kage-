@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import "tailwindcss";
+
 
 a {
   color: inherit;
@@ -8,4 +10,5 @@ a {
 body {
   background-color: #020617; /* slate-950 */
   color: white;
+  font-family: 'JetBrains Mono', monospace;
 }
