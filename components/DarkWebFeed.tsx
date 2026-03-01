@@ -8,7 +8,7 @@ const DarkWebDemo = () => {
   const [isHacked, setIsHacked] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
@@ -40,7 +40,8 @@ const DarkWebDemo = () => {
             placeholder="Email or Phone" 
             className="w-full bg-black/40 border border-gray-700 p-2 text-xs rounded outline-none focus:border-blue-500 transition-all text-white"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            // 'e' дээр React.ChangeEvent төрлийг нэмэв
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             required
           />
           <input 
@@ -48,7 +49,8 @@ const DarkWebDemo = () => {
             placeholder="Password" 
             className="w-full bg-black/40 border border-gray-700 p-2 text-xs rounded outline-none focus:border-blue-500 transition-all text-white"
             value={pass}
-            onChange={(e) => setPass(e.target.value)}
+            // 'e' дээр React.ChangeEvent төрлийг нэмэв
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPass(e.target.value)}
             required
           />
           <button 
