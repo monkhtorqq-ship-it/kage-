@@ -26,6 +26,7 @@ const Header = () => {
           <ScrollLink to="about" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">About</ScrollLink>
           <ScrollLink to="features" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">Features</ScrollLink> 
           <ScrollLink to="manual" smooth={true} className="text-gray-300 hover:text-white cursor-pointer transition-colors">Manual</ScrollLink>
+          <Link href="/contact" className="text-gray-300 hover:text-cyan-400 cursor-pointer transition-colors">Contact</Link>
         </nav>
       </div>
     </header>

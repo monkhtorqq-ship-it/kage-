@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => { 
     return (
         <footer className="w-full py-6 bg-gray-900/50 backdrop-blur-sm text-gray-400 mt-auto border-t border-gray-800/50">
@@ -13,6 +15,9 @@ const Footer = () => {
                         <h3 className="text-lg font-bold text-white mb-2">Contact</h3>
                         <p className="text-xs">Address: BOGDIIN MUZEIN ARD</p>
                         <p className="text-xs">Email: EdwardSnowden666@gmail.com</p>
+                        <Link href="/contact" className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                            Open contact page
+                        </Link>
                     </div>
                 </div>
 
